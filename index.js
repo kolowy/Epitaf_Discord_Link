@@ -1,3 +1,8 @@
+const keepAlive = require('./server');
+keepAlive();
+
+
+
 const axios = require('axios');
 const cron = require('cron');
 const moment = require('moment')
@@ -5,6 +10,7 @@ const { MessageEmbed } = require('discord.js');
 const { MessageActionRow, MessageButton } = require('discord.js');
 require('dotenv').config()
 const token = process.env.TOKEN
+const configEmbed = require('./embed.json')
 
 
 const headers = {
@@ -23,24 +29,31 @@ client.on("ready", () => {
 async function main(message) {
     await axios.get('https://api.epitaf.fr/v1/tasks', headers)
         .then(function(response) {
+            let devoirEmbeds = []
+            let config = 'teest'
             for (let i = 0; i < response.data.length; i++) {
                 const element = response.data[i];
+                if(element.subject == 'algorithmics'){config = configEmbed.algorithmics}
+                else if(element.subject == 'english'){config = configEmbed.english}
+                else if(element.subject == 'architecture'){config = configEmbed.architecture}
+                else if(element.subject == 'other'){config = configEmbed.other}
+                else if(element.subject == 'electronics'){config = configEmbed.electronics}
+                else if(element.subject == 'mathematics'){config = configEmbed.mathematics}
+                else if(element.subject == 'physics'){config = configEmbed.physics}
+                else if(element.subject == 'programming'){config = configEmbed.programming}
+                else if(element.subject == 'project'){config = configEmbed.project}
+                else if(element.subject == 'te'){config = configEmbed.te}
+
                 const devoir = new MessageEmbed()
-                .setColor('#32a852')
-                .setAuthor(matières[element.subject] ? matières[element.subject] : element.subject)
-                .addField(element.title, element.content, false)
-                .setFooter(element.due_date.substring(0, 10))
+                    .setColor(config.color)
+                    .setThumbnail(config.header_icon)
+                    .setAuthor(config.name)
+                    .addField(element.title, element.content, false)
+                    .setFooter(element.due_date.substring(0, 10))
 
-                const row = new MessageActionRow()
-                .addComponents(
-                    new MessageButton()
-                        .setCustomId('primary')
-                        .setLabel('Primary')
-                        .setStyle('PRIMARY'),
-                );
-
-                message.channel.send({ embeds: [ devoir ], components: [row]})
+                devoirEmbeds.push(devoir)
             }
+            message.channel.send({ embeds: devoirEmbeds })
         })
         .catch(function(error) {
             console.log(error)

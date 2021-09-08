@@ -1,0 +1,61 @@
+{
+    "algorithmics":{
+        "name" : "Algorithmique",
+        "color" : "#64FF00",
+        "header_icon" : "https://media0.gmgroup.be/algorithmes.jpg?size=1024x1024"
+    },
+
+    "english" :{
+        "name" : "Anglais",
+        "color" : "#E8FF00",
+        "header_icon" : "https://www.noosfere.org/grenier/images/avis/badge_anglais.gif"
+    },
+
+    "architecture" : {
+        "name" : "Architecture des ordinateurs",
+        "color" : "#00FF8B",
+        "header_icon" : "https://i.pinimg.com/originals/59/2f/a0/592fa074fc151e9617c117c77ca4fe73.jpg"
+    },
+
+    "other" : {
+        "name" : "autre",
+        "color" : "#010101",
+        "header_icon" : "https://tiermaker.com/images/templates/4678031592991154.png"
+    },
+
+    "electronics" : {
+        "name" : "Electronique",
+        "color" : "#FF2E00",
+        "header_icon" : "http://www.fredelec.com/rubrique/conception/pic/02_DESSIN%20DE%20CARTE.jpg"
+    },
+
+    "mathematics" : {
+        "name" : "Mathématiques",
+        "color" : "#00A6FF",
+        "header_icon" : "http://images.clipartpanda.com/math-book-clipart-pi577RkiB.jpeg"
+    },
+
+    "physics" : {
+        "name" : "Physique",
+        "color" : "#00FFE0",
+        "header_icon" : "https://cdn.futura-sciences.com/buildsv6/images/wide1920/9/b/6/9b6908ba7f_50153898_nouvel-etat-matiere-supraconductivite-topologique.jpg"
+    },
+
+    "programming" : {
+        "name" : "programmation",
+        "color" :"#0023FF",
+        "header_icon" : "https://get.wallhere.com/photo/abstract-space-numbers-symmetry-blue-graphic-design-pattern-technology-circle-tunnel-binary-line-energy-graphics-1920x1080-px-computer-wallpaper-fractal-art-font-organism-778561.jpg"
+    },
+
+    "project" : {
+        "name" : "project",
+        "color" : "#BD00FF",
+        "header_icon" : "http://www.projectissimo.com/images/Image/pages_information/table_des_matieres.GIF"
+    },
+
+    "te" : {
+        "name" : "TE",
+        "color" : "#FF0087",
+        "header_icon" : "https://fr.cdn.v5.futura-sciences.com/buildsv6/images/wide1920/e/7/0/e70ccaaf4a_91935_matiere.jpg"   
+    }
+}
