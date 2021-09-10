@@ -29,20 +29,20 @@ dictTask.set('algorithmics',configEmbed.algorithmics).set('english',configEmbed.
     .set('project',configEmbed.project).set('te',configEmbed.te);
 
 const dictCalendar = new Map();//regrouping all the configs for the embeds in a dict
-dictCalendar.set('Algorithmique',configEmbed.algorithmics).set('english',configEmbed.english)
-    .set('architecture',configEmbed.architecture).set('other',configEmbed.other)
-    .set('electronics',configEmbed.electronics).set('Mathématiques',configEmbed.mathematics)
-    .set('physics',configEmbed.physics).set('programming',configEmbed.programming)
-    .set('project',configEmbed.project).set('te',configEmbed.te);
+dictCalendar.set('Algorithmique',configEmbed.algorithmics).set('Anglais',configEmbed.english)
+    .set('Architecture',configEmbed.architecture).set('Autre',configEmbed.other)
+    .set('Électroniques',configEmbed.electronics).set('Mathématiques',configEmbed.mathematics)
+    .set('Physique',configEmbed.physics).set('Programmation',configEmbed.programming)
+    .set('Projet',configEmbed.project).set('TE',configEmbed.te);
 
 //Retrieving the current date
 TheDay = new Date();
 TheNewDay = TheDay.toISOString().substring(0, 10)
-TheNextDay = new Date()
+TheNextDay = new Date() // Tommorow
 TheNextDay.setDate(TheNextDay.getDate()+1)
 TheNextDay = TheNextDay.toISOString().substring(0,10)
 
-Temp = new Date("2021-09-13")
+Temp = new Date("2021-09-13")//Temp pour test
 DateTemp = Temp.toISOString().substring(0,10)
 
 async function tasks(guild) {
@@ -105,6 +105,7 @@ async function calendar(guild){
 
           hFin = hFinTemp + element.endDate.substring(13,19)
           hDebut = hDebTemp + element.startDate.substring(13,19)
+          //=======================================================//
 
           const event = new MessageEmbed()
           .setColor(config.color)
@@ -115,6 +116,7 @@ async function calendar(guild){
             {name:"Heure de fin",value:hFin},
             {name:'Salle',value:element.rooms[0].name}
             )
+
           calendarEmbeds.push(event)
         }
 
