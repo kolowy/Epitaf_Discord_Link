@@ -48,20 +48,19 @@ DateTemp = Temp.toISOString().substring(0,10)
 async function tasks(guild) {
   await axios.get('https://api.epitaf.fr/v1/tasks', headers)
     .then(function(response) {
-      console.log(response.data)
         let taskEmbeds = []
         let config = ''
         for (let i = 0; i < response.data.length; i++) {
             const element = response.data[i];
-            config = dictTask.get(element.subject);
+            config = dictTask.get(response.data[i].subject);
             //Checking for what day is the work
-            if (element.due_date.substring(0, 10)!=TheNewDay){//If the work isn't for today : add
+            if (response.data[i].due_date.substring(0, 10)!=TheNewDay){//If the work isn't for today : add
               const task = new MessageEmbed()
               .setColor(config.color)
               .setThumbnail(config.header_icon)
               .setAuthor(config.name)
-              .addField(element.title, element.content, false)
-              .setFooter("Pour le " + element.due_date.substring(8, 10)+ element.due_date.substring(4, 8)+ element.due_date.substring(0, 4))//Putting the date in the French format
+              .addField(response.data[i].title, response.data[i].content, false)
+              .setFooter("Pour le " + response.data[i].due_date.substring(8, 10)+ response.data[i].due_date.substring(4, 8)+ response.data[i].due_date.substring(0, 4))//Putting the date in the French format
               taskEmbeds.push(task)
             }else{
                 //pass because no need to this today's work
@@ -79,15 +78,21 @@ async function calendar(guild){
     .then(function(response) {
       var calendarEmbeds = []
       let config = ''
-      
-      for (let i = 0; i < response.data.length; i++){
-        const element = response.data[i]
-        config = dictCalendar.get(element.name)
+      var courses = []
 
-        if (element.startDate.substring(0,10)==DateTemp){
-          
+      for (let i = 0; i < response.data.length; i++){
+        if (response.data[i].startDate.substring(0,10)==DateTemp){
+            courses.push(response.data[i])
+        }
+      }
+      courses.sort((a, b) => a.startDate.substring(11,13) - b.startDate.substring(11,13));
+
+      for (let i = 0; i < courses.length; i++){
+        config = dictCalendar.get(courses[i].name)
+        if (courses[i].startDate.substring(0,10)==DateTemp){
+
           //On passe au bon horaire
-          hDebut = element.startDate.substring(11,19)
+          hDebut = courses[i].startDate.substring(11,19)
           hDebTemp = (parseInt(hDebut.substring(0,2))+2)
           if(hDebTemp<10){
             hDebTemp = "0" + hDebTemp.toString()
@@ -95,7 +100,7 @@ async function calendar(guild){
             hDebTemp.toString()
           }
 
-          hFin = element.endDate.substring(11,19)
+          hFin = courses[i].endDate.substring(11,19)
           hFinTemp = (parseInt(hFin.substring(0,2))+2)
           if(hFinTemp<10){
             hFinTemp = "0" + hFinTemp.toString()
@@ -103,8 +108,8 @@ async function calendar(guild){
             hFinTemp.toString()
           }
 
-          hFin = hFinTemp + element.endDate.substring(13,19)
-          hDebut = hDebTemp + element.startDate.substring(13,19)
+          hFin = hFinTemp + courses[i].endDate.substring(13,19)
+          hDebut = hDebTemp + courses[i].startDate.substring(13,19)
           //=======================================================//
 
           const event = new MessageEmbed()
@@ -114,13 +119,12 @@ async function calendar(guild){
           .addFields(
             {name:"Heure de début",value:hDebut},
             {name:"Heure de fin",value:hFin},
-            {name:'Salle',value:element.rooms[0].name}
+            {name:'Salle',value:courses[i].rooms[0].name}
             )
 
-          calendarEmbeds.push(event)
-        }
-
-    }
+          calendarEmbeds.push(event) 
+        } 
+      }
     if (calendarEmbeds.length==0){
       const nothEmbed = new MessageEmbed()
         .setColor('#FF2E00')
