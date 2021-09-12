@@ -1,0 +1,61 @@
+{
+    "algorithmics":{
+        "name" : "Algorithmics",
+        "color" : "#64FF00",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885941684662337586/490273.png"
+    },
+
+    "english" :{
+        "name" : "English",
+        "color" : "#E8FF00",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885944140691570769/unknown.png"
+    },
+
+    "architecture" : {
+        "name" : "Architecture",
+        "color" : "#00FF8B",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885944442144579605/unknown.png"
+    },
+
+    "other" : {
+        "name" : "Other",
+        "color" : "#010101",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885945141347622952/unknown.png"
+    },
+
+    "electronics" : {
+        "name" : "Electronics",
+        "color" : "#FF2E00",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885942775596605470/unknown.png"
+    },
+
+    "mathematics" : {
+        "name" : "Mathematics",
+        "color" : "#00A6FF",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885941875045982268/unknown.png"
+    },
+
+    "physics" : {
+        "name" : "Physics",
+        "color" : "#00FFE0",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885944657576620052/unknown.png"
+    },
+
+    "programming" : {
+        "name" : "Programming",
+        "color" :"#0023FF",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885943613262020648/unknown.pngg"
+    },
+
+    "project" : {
+        "name" : "project",
+        "color" : "#BD00FF",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885945029078687804/unknown.png"
+    },
+
+    "te" : {
+        "name" : "TE",
+        "color" : "#FF0087",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885943254288318515/unknown.png"   
+    }
+}
