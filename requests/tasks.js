@@ -8,7 +8,6 @@ var TheNewDay = TheDay.toISOString().substring(0, 10)
 var TheNextDay = new Date() // Tommorow
 TheNextDay.setDate(TheNextDay.getDate()+1)
 var TheNextDay = TheNextDay.toISOString().substring(0,10)
-console.log(TheNextDay)
 let token = apiToToken()
 let headers = { headers: { 'Authorization': 'Bearer ' + token } }
 
@@ -18,7 +17,6 @@ async function apiToToken() {
     axios.post('https://api.epitaf.fr/v1/users/callback', " ", header)
         .then(function(response) {
             token = response.data.token;
-            console.log (token)
             headers = { headers: { 'Authorization': 'Bearer ' + token } }
             return response.data.token;
         })
@@ -26,7 +24,6 @@ async function apiToToken() {
         console.log(error)
     });
 }
-console.log (token)
 
 
 
@@ -55,13 +52,12 @@ async function tasks(guild) {
     .then(function(response) {
         let taskEmbeds = []
         let config = ''
-        console.log(response.data.length)
         for (let i = 0; i < response.data.length; i++) {
             config = dictTask.get(response.data[i].subject);
             //Checking for what day is the work
             
-            if (response.data[i].due_date.substring(0, 10)!=TheNewDay && response.data[i].due_date.substring(0, 10) == TheNextDay){//If the work isn't for today : add$
-              console.log(response.data[i].due_date.substring(0, 10)) 
+            if (response.data[i].due_date.substring(0, 10)!=TheNewDay && response.data[i].due_date.substring(0, 10) == TheNextDay){
+                //If the work isn't for today : add$
               const task = new MessageEmbed()
               .setColor(config.color)
               .setThumbnail(config.header_icon)
