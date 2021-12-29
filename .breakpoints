@@ -1,3 +1,20 @@
 {
-  "files": {}
+  "files": {
+    "events/messageCreate.js": [
+      {
+        "id": "f84b8b0e-10d6-4d04-8621-303bc8008d77",
+        "line": 1,
+        "version": 2,
+        "index": 0
+      }
+    ],
+    "requests/tasks.js": [
+      {
+        "id": "30079696-cbf4-41fe-9fc9-9df1a4672e04",
+        "line": 194,
+        "version": 2275,
+        "index": 7562
+      }
+    ]
+  }
 }

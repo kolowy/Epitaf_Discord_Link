@@ -57,5 +57,17 @@
         "name" : "TE",
         "color" : "#FF0087",
         "header_icon" : "https://cdn.discordapp.com/attachments/882964109413466122/885943254288318515/unknown.png"   
+    },
+
+    "soutien" : {
+        "name" : "Support courses",
+        "color" : "#FF0087",
+        "header_icon" : "http://bisconticomputers.com/wp-content/uploads/2015/01/help-banner.jpg"   
+    },
+
+    "exam" : {
+        "name" : "Exam",
+        "color" : "#A69F09",
+        "header_icon" : "https://cdn.discordapp.com/attachments/882964138505142272/904768780469682267/exam.png"
     }
 }
